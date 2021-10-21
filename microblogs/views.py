@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import User
 from .forms import SignUpForm,LogInForm
 from django.contrib.auth import authenticate,login
+from django.contrib import messages
 # Create your views here.
 
 def log_in(request):
@@ -14,7 +15,8 @@ def log_in(request):
             if user is not None:
                 login(request, user)
                 return redirect('feed')
-
+            #Add error message here
+        messages.add_message(request, messages.ERROR, "The credentials provided were invalid!")
     form = LogInForm()
     return render(request,'log_in.html', {'form':form})
 
