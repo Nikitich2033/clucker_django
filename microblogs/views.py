@@ -3,6 +3,8 @@ from .models import User
 from .forms import SignUpForm
 # Create your views here.
 
+def log_in(request):
+    return render(request,'log_in.html')
 
 def feed(request):
     return render(request,'feed.html')
