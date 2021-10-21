@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import User
 from .forms import SignUpForm,LogInForm
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login, logout
 from django.contrib import messages
 # Create your views here.
 
@@ -22,6 +22,10 @@ def log_in(request):
 
 def feed(request):
     return render(request,'feed.html')
+
+def log_out(request):
+    logout(request)
+    return redirect('home')
 
 def home(request):
     return render(request,'home.html')
