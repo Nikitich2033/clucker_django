@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>User List</title>
+  </head>
+  <body>
+        <h1>User List</h1>
+        {% for user in userList %}
+          <p><b>{{ user.get_username }}</b></p>
+        {% endfor %}
+  </body>
+</html>

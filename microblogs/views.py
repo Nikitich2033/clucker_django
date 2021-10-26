@@ -20,11 +20,24 @@ def log_in(request):
     form = LogInForm()
     return render(request,'log_in.html', {'form':form})
 
+def user_list(request):
+
+    userList = User.objects.all();
+    context= {'userList': userList}
+    return render(request,'user_list.html',context)
+
+def show_user(request,user_id):
+    # if request.method == 'GET':
+    # add context with content 
+    return render(request,'show_user.html')
+
 def feed(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
-        text = form.text
-    return render(request,'feed.html')
+        if form.is_valid():
+            text = form.get(text)
+    form = PostForm()
+    return render(request,'feed.html',{'form':form})
 
 def log_out(request):
     logout(request)

@@ -4,7 +4,7 @@ from django.core.validators import RegexValidator
 
 
 class PostForm(forms.Form):
-    text = forms.Textarea();
+    text = forms.CharField(label = "Text",widget = forms.Textarea());
 
 
 class LogInForm(forms.Form):

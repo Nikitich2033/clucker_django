@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from microblogs import views
+from microblogs.models import User
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,5 +24,7 @@ urlpatterns = [
     path('feed/',views.feed, name= 'feed'),
     path('log_in/',views.log_in, name= 'log_in'),
     path('log_out/',views.log_out, name= 'log_out'),
-    path('sign_up/',views.sign_up, name = 'sign_up')
+    path('sign_up/',views.sign_up, name = 'sign_up'),
+    path('users/',views.user_list, name = 'user_list'),
+    path('user/<str:user_id>', views.show_user, name='show_user')
 ]
