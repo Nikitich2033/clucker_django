@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import User
-from .forms import SignUpForm,LogInForm
+from .forms import SignUpForm,LogInForm,PostForm
 from django.contrib.auth import authenticate,login, logout
 from django.contrib import messages
 # Create your views here.
@@ -21,6 +21,9 @@ def log_in(request):
     return render(request,'log_in.html', {'form':form})
 
 def feed(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        text = form.text
     return render(request,'feed.html')
 
 def log_out(request):

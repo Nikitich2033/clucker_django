@@ -1,6 +1,11 @@
 from django import forms
-from .models import User
+from .models import User,Post
 from django.core.validators import RegexValidator
+
+
+class PostForm(forms.Form):
+    text = forms.Textarea();
+
 
 class LogInForm(forms.Form):
     username = forms.CharField(label = "Username")

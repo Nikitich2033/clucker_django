@@ -1,7 +1,8 @@
 """Configuration of the administrative interface for microblogs"""
 
 from django.contrib import admin
-from .models import User
+from .models import User, Post
+
 
 # Register your models here.
 
@@ -11,3 +12,5 @@ class UserAdmin(admin.ModelAdmin):
     list_display = [
         'username','first_name','last_name','email','is_active'
     ]
+
+admin.site.register(Post)
