@@ -6,6 +6,13 @@
   </head>
   <body>
         <h1>Clucker</h1>
+        {% for post in postList %}
+        <p><b>-------------------------------------------</b></p>
+                  <p><b>{{ post.author }}</b></p>
+                  <p><b>{{ post.created_at}}</b></p>
+                  <p><b>{{ post.text }}</b></p>
+          <p><b>-------------------------------------------</b></p>
+        {% endfor %}
         <form action='{% url 'new_post'%}' method='GET'>
           <button type='submit'> Create New Post</button>
         </form>

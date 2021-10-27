@@ -46,8 +46,9 @@ def new_post(request):
     return render(request,'new_post.html',{'form':form})
 
 def feed(request):
-
-    return render(request,'feed.html')
+    postList = Post.objects.all()
+    context = {'postList':postList}
+    return render(request,'feed.html',context)
 
 def log_out(request):
     logout(request)
