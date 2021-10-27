@@ -6,8 +6,11 @@
   </head>
   <body>
         <h1>Show User</h1>
-        <!-- {% for user in userList %}
-          <p><b>{{ user.get_username }}</b></p>
-        {% endfor %} -->
+
+          <p><b>Username: </b><b>{{ user.get_username}}</b></p>
+          <p><b>Full name: </b><b>{{ user.first_name }}</b> <b>{{ user.last_name }}</b></p>
+          <p><b>Email: </b><b>{{ user.email }}</b></p>
+          <p><b>Bio: </b><b>{{ user.bio }}</b></p>
+
   </body>
 </html>

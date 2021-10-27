@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import User
+from .models import User,Post
 from .forms import SignUpForm,LogInForm,PostForm
 from django.contrib.auth import authenticate,login, logout
 from django.contrib import messages
@@ -27,17 +27,27 @@ def user_list(request):
     return render(request,'user_list.html',context)
 
 def show_user(request,user_id):
-    # if request.method == 'GET':
-    # add context with content 
-    return render(request,'show_user.html')
+    context = {};
+    if request.method == 'GET':
+        userList = User.objects.all();
+        for user in userList:
+            if user.get_username() == user_id:
+                context={'user':user}
+    return render(request,'show_user.html',context)
 
-def feed(request):
+def new_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
-            text = form.get(text)
+            text = form.cleaned_data.get('text')
+            form.save()
+            return redirect('feed')
     form = PostForm()
-    return render(request,'feed.html',{'form':form})
+    return render(request,'new_post.html',{'form':form})
+
+def feed(request):
+
+    return render(request,'feed.html')
 
 def log_out(request):
     logout(request)

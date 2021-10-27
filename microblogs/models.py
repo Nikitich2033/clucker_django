@@ -20,7 +20,7 @@ class User(AbstractUser):
     bio = models.CharField(max_length=520, blank = True)
 
 class Post(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default = None, null = True)
     text = models.CharField(max_length = 280)
     created_at = models.DateTimeField(default = timezone.now)
     class Meta:

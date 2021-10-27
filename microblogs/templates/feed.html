@@ -6,10 +6,8 @@
   </head>
   <body>
         <h1>Clucker</h1>
-        <form action="{% url 'feed' %}"  method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Create post">
+        <form action='{% url 'new_post'%}' method='GET'>
+          <button type='submit'> Create New Post</button>
         </form>
   </body>
 </html>
