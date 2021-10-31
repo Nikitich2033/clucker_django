@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Feed</title>
-  </head>
-  <body>
-        <h1>Clucker</h1>
+{% extends 'base.html'%}
+{% block body%}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 offset-md-3">
+        <h1>Feed</h1>
         {% for post in postList %}
         <p><b>-------------------------------------------</b></p>
                   <p><b>{{ post.author }}</b></p>
@@ -14,7 +12,9 @@
           <p><b>-------------------------------------------</b></p>
         {% endfor %}
         <form action='{% url 'new_post'%}' method='GET'>
-          <button type='submit'> Create New Post</button>
+          <button type='submit' class="btn btn-primary"> Create New Post</button>
         </form>
-  </body>
-</html>
+    </div>
+  </div>
+</div>
+{% endblock%}
